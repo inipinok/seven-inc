@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kost;
 use App\Models\Cateogry;
 Use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class KostController extends Controller
 {
