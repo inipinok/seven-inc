@@ -71,6 +71,9 @@
 									<li class="nav-item">
 									<a class="nav-link" href="#">Contact</a>
 									</li>
+									<li class="nav-item">
+									<a class="nav-link" href="{{url('kost')}}">Kost</a>
+									</li>
 									<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Boking
@@ -252,21 +255,23 @@
 	</div>
 	<!-- end features list section -->
 	<!-- latest news -->
+	
 	<div class="latest-news pt-40 pb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-6">
+				<div class="mb-5 border-bottom">
 					<div class="single-latest-news">
-						<a href="{{url('pondokputri')}}"><img src="asset/assets/img/kost4.jpg" alt=""></a>
+						@foreach ($query as $kost)
 						<div class="news-text-box">
-							<h3><a href="{{url('pondokputri')}}">Kost Pondok Putri 42 Bantul</a></h3>
+							<h3><a href="{{url('kosts/'.$kost->slug)}}">{{ $kost->title }}</a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
 							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+							{!! $kost->excerpt !!}
 						</div>
+						<a href="{{url('kosts/'.$kost->slug)}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+						@endforeach
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
@@ -283,114 +288,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost12.jpg" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('putriceria')}}">Kost Putri Ceria</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 4 Juli, 2021</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>	
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost37.webp" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('inikost')}}">Ini Kost</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 12 Agsutus, 2021</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost2.jpg" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('omahkost')}}">Omah Kost</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i>24 Juli, 2022</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost43.jpg" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('kostputra')}}">Kost Putra</a></h3> 
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 18 Februari, 2022</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost17.jpg" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('putrabantul')}}">Putra Kost Bantul</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 28 Juli, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost45.jpg" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('khususputra')}}">Kost Khusus Putra</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 3 December, 2020</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-latest-news">
-						<a href=""><img src="asset/assets/img/kost5.jpg" alt=""></a>
-						<div class="news-text-box">
-							<h3><a href="{{url('kostkita')}}">Kost Kita</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 30 Maret, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="{{url('#')}}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
 			</div>
-			</div>
+			</div>	
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<a href="news.html" class="boxed-btn">More News</a>
 				</div>
 			</div>
 		</div>
+		<!-- end latest news -->
 	</div>
-	<!-- end latest news -->
 
 	<!-- footer -->
 	<div class="footer-area">
@@ -463,6 +370,7 @@
 		</div>
 	</div>
 	<!-- end copyright -->
+	yield('content')
 	
 	<!-- jquery -->
 	<script src="asset/assets/js/jquery-1.11.3.min.js"></script>

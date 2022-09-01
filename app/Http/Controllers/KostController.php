@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kost;
+use App\Models\Cateogry;
+Use App\Models\User;
+use DB;
 
 class KostController extends Controller
 {
@@ -12,10 +16,22 @@ class KostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $data['query'] =Kost::with('Category')->get();
+        return view('kost', $data);
     }
 
+    public function singleKost($slug) {
+        $result['kost'] =DB::table('kosts') ->where('slug', $slug) ->first() ;
+    
+        return view ('kosts', $result) ;
+    }
+
+    public function Second()
+    {
+        $data['query'] =Kost::with('User')->get();
+        return view('kosts', $data);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,10 +59,14 @@ class KostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
+    // public function show(kost $kost)
+    // {
+    //     return view('kost', [
+    //         "title" => "single post",
+    //         "kost" => $kost
+    //     ]);
+    // }
 
     /**
      * Show the form for editing the specified resource.

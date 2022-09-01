@@ -16,18 +16,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $search = kost::latest();
-
-        if(request('search')) {
-            $search->where('nama_kost', 'like', '%' . request('search') . '%')
-                   ->orWhere('deskripsi', 'like', '%' . request('search') . '%');
-        }
-
-        return view('dashboard.main', [
-            "title" => "All Kost",
-            "active" => 'search',
-            "search" => $search->get()
-        ]);
+        $data['query']=Kost::with('Category')->get();
+        return view('dashboard.main', $data);
     }
     /**
      * Show the form for creating a new resource.

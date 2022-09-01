@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KostController;
+use App\Htp\Controllers\DB;
+use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +66,13 @@ Route::get('kostkita', function () {
 Route::get('account', function () {
     return view('account');
 });
+
+Route::get('kost', [KostController::class, 'index']);
+Route::get('kosts', [KostController::class, 'Second']);
+
+// halaman single post
+Route::get('kosts/{slug}', [KostController::class, 'singleKost']);
+
 Route::get('/', [DashboardController::class, 'index']);
 
 Auth::routes();
