@@ -8,12 +8,11 @@
 </head>
 <body>
 
+    <p><a href="{{ url('kosts/' . $kost->slug) }}">{{ $kost->user->name }}</a></p>
+    <h1 >{{ $kost->title }}</h1>
+    {!! $kost->body !!}
 
-    @foreach($kosts as $kost)
-        <p><a href="{{ url('kosts/' . $kost->slug) }}">{{ $kost->user->name }}</a></p>
-        <h1 >{{ $kost->title }}</h1>
-        {!! $kost->body !!}
-    @endforeach
-
+    <hr>
+    <a href="{{url('kosts')}}">back</a>
 </body>
 </html>

@@ -22,14 +22,14 @@ class KostController extends Controller
     }
 
     public function singleKost($slug) {
-        $result['kost'] =DB::table('kosts') ->where('slug', $slug) ->first() ;
+        $result['kost'] = Kost::with('user')->where('slug', $slug)->first() ;
 
-        return view ('kosts', $result) ;
+        return view ('kosts_single', $result) ;
     }
 
     public function Second()
     {
-        $data['kosts'] = Kost::with('user')->get();
+        $data['kosts'] = Kost::with('user')->get(); // 'user' diambil dari Models/Kost.php pada nama function user()
         return view('kosts', $data);
     }
     /**
