@@ -7,9 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <p><a href="#">{{ $kost->User->name }}</a></p>
-    <h1 >{{ $kost->title }}</h1>
-    {!! $kost->body !!}
+
+
+    @foreach($kosts as $kost)
+        <p><a href="#">{{ $kost->user->name }}</a></p>
+        <h1 >{{ $kost->title }}</h1>
+        {!! $kost->body !!}
+    @endforeach
+
+
     <a href="{{url('kost')}}">back</a>
 </body>
 </html>

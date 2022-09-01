@@ -16,20 +16,20 @@ class KostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
         $data['query'] =Kost::with('Category')->get();
         return view('kost', $data);
     }
 
     public function singleKost($slug) {
         $result['kost'] =DB::table('kosts') ->where('slug', $slug) ->first() ;
-    
+
         return view ('kosts', $result) ;
     }
 
     public function Second()
     {
-        $data['query'] =Kost::with('User')->get();
+        $data['kosts'] = Kost::with('user')->get();
         return view('kosts', $data);
     }
     /**
@@ -59,7 +59,7 @@ class KostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     // public function show(kost $kost)
     // {
     //     return view('kost', [
