@@ -3,9 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KostController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardKostController;
+use App\Http\Controllers\DashboardTransaksiController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 use App\Htp\Controllers\DB;
 use App\Models\Category;
-use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Kost;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,60 +31,36 @@ use App\Models\User;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('shop', function () {
-    return view('shop');
-});
-Route::get('booking', function () {
-    return view('booking');
-});
-Route::get('checkout', function () {
-    return view('checkout');
-});
-Route::get('contact', function () {
-    return view('contact');
-});
-Route::get('putriceria', function () {
-    return view('putriceria');
-});
-Route::get('about', function () {
-    return view('about');
-});
-Route::get('pondokputri', function() {
-    return view('pondokputri');
-});
-Route::get('putribantul', function () {
-    return view('putribantul');
-});
-Route::get('inikost', function () {
-    return view('inikost');
-});
-Route::get('omahkost', function () {
-    return view('omahkost');
-});
-Route::get('kostputra', function () {
-    return view('kostputra');
-});
-Route::get('putrabantul', function () {
-    return view('putrabantul');
-});
-Route::get('khususputra', function () {
-    return view('khususputra');
-});
-Route::get('kostkita', function () {
-    return view('kostkita');
-});
-Route::get('account', function () {
-    return view('account');
-});
-
-Route::get('kost', [KostController::class, 'index']);
-Route::get('kosts', [KostController::class, 'Second']);
 
 // halaman single post
 Route::get('kosts/{slug}', [KostController::class, 'singleKost']);
+Route::get('kosts', [KostController::class, 'Second']);
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
-Auth::routes();
+Route::get('author/{user:name}', [AuthorController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('categories/{category:slug}', [CategoryController::class, 'index']);
+Route::get('categories', [CategoryController::class, 'indek']);
+Route::get('kategori', [CategoryController::class, 'kategory']);
+
+// login
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login', [LoginController::class, 'authenticate']);
+Route::post('logout', [LoginController::class, 'logout']);
+
+Route::get('register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
+Route::post('register', [RegisterController::class, 'store']);
+
+Route::get('dashboard', [AdminController::class, 'index'])->name('admin');
+
+Route::resource('/dashboard/kost', DashboardKostController::class)->except(['edit',])->middleware('auth');
+Route::post('/dashboard/kost/{kost:slug}/edit', function (kost $kost) {
+    $kos = new DashboardKostController;
+    $req = new Request;
+    return $kos->update($req, $kost);
+});
+
+Route::resource('/dashboard/pembayaran', DashboardTransaksiController::class)->middleware('auth');
+
+Route::resource('/dashboard/wishlist', WishlistController::class)->middleware('auth');

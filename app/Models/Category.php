@@ -9,8 +9,8 @@ class Category extends Model
 {
     protected $guarded = ['id'];
 
-    public function category()
+    public function kosts()
     {
-        return $this->belongsTo(Kost::class);
+        return $this->hasMany(Kost::class);
     }
 }

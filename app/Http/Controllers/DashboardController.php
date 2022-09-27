@@ -17,7 +17,12 @@ class DashboardController extends Controller
     public function index()
     {
         $data['query']=Kost::with('Category')->get();
-        return view('dashboard.main', $data);
+        return view('template.main', $data);
+    }
+
+    public function dashboard() {
+        $data = array('title' => 'dashboard');
+        return view('dashboard.index', $data);
     }
     /**
      * Show the form for creating a new resource.

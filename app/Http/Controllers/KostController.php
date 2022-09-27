@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kost;
 use App\Models\Cateogry;
 Use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class KostController extends Controller
 {
@@ -17,20 +17,33 @@ class KostController extends Controller
      */
     public function index()
     { 
-        $data['query'] =Kost::with('Category')->get();
-        return view('kost', $data);
+        $data['kosts'] =Kost::with('category')->get();
+        return view('kosts', [
+            "title" => "semua kost ada disini gais!"
+        ], $data);
     }
 
-    public function singleKost($slug) {
-        $result['kost'] =DB::table('kosts') ->where('slug', $slug) ->first() ;
-    
-        return view ('kosts', $result) ;
+    public function singleKost($slug) 
+    {
+        $result['kost'] = Kost::with('user')->where('slug', $slug)->first();
+        
+        return view ('kosts_single', $result);
     }
 
     public function Second()
     {
-        $data['query'] =Kost::with('User')->get();
-        return view('kosts', $data);
+        $data['kosts'] =Kost::with('user')->get();
+        return view('kosts', [
+            "title" => "welcome bestiee, cari kost disini aja",
+            "kosts" => Kost::latest()->filter(request(['search', 'category']))->get()
+        ], $data);
+    }
+
+    public function singleFasil($fasilitas) 
+    {
+        $result['kost'] = Kost::with('fasilitas')->where('fasilitas', $fasilitas)->first();
+        
+        return view ('kosts_single', $result);
     }
     /**
      * Show the form for creating a new resource.
