@@ -53,13 +53,7 @@ Route::get('register', [RegisterController::class, 'index'])->name('register')->
 Route::post('register', [RegisterController::class, 'store']);
 
 Route::get('dashboard', [AdminController::class, 'index'])->name('admin');
-
-Route::resource('/dashboard/kost', DashboardKostController::class)->except(['edit',])->middleware('auth');
-Route::post('/dashboard/kost/{kost:slug}/edit', function (kost $kost) {
-    $kos = new DashboardKostController;
-    $req = new Request;
-    return $kos->update($req, $kost);
-});
+Route::resource('/dashboard/kost', DashboardKostController::class)->middleware('auth');
 
 Route::resource('/dashboard/pembayaran', DashboardTransaksiController::class)->middleware('auth');
 
