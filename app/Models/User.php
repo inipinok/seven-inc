@@ -41,4 +41,28 @@ class User extends Authenticatable
     public function kosts(){
         return $this->hasMany(Kost::class);
     }
+
+    public function isAdmin()
+    {
+        if($this->role === 'admin')
+        { 
+            return true; 
+        } 
+        else 
+        { 
+            return false; 
+        }
+    }
+
+    public function isPemilik()
+    {
+        if($this->role === 'pemilik_kost')
+        { 
+            return true; 
+        } 
+        else 
+        { 
+            return false; 
+        }
+    }
 }

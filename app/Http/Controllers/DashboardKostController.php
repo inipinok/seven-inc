@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardKostController extends Controller
 {
@@ -120,6 +121,9 @@ class DashboardKostController extends Controller
         $validatedDate = $request->validate($rules);
 
         if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
             $validatedDate['image'] = $request->file('image')->store('post-images');
         }
 
@@ -139,6 +143,9 @@ class DashboardKostController extends Controller
      */
     public function destroy(Kost $kost)
     {
+        if($kost->image) {
+            Storage::delete($kost->image);
+        }
         Kost::destroy($kost->id);
 
         return redirect('dashboard/kost')->with('success', 'post has been deleted!');

@@ -24,10 +24,10 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function kategory()
-    {
-        return view('category.index', [
-            'categories' => Category::all(),
-        ]);
-    }
+    // public function kategory()
+    // {
+    //     return view('category.index', [
+    //         'categories' => Category::all(),
+    //     ]);
+    // }
 }

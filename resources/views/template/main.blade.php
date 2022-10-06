@@ -90,10 +90,7 @@
 				<a class="nav-link" href="{{ url('categories') }}">Category</a>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="{{ url('dashboard') }}">Admin</a>
-				</li>
-				<li class="nav-item">
-				<a class="nav-link" href="{{ url('checkout') }}"><i class="bi bi-cart2"></i></a>
+				<a class="nav-link" href="{{ url('cart') }}"><i class="bi bi-cart2"></i></a>
 				</li>
 			</ul>
 			<ul>
@@ -108,7 +105,11 @@
 						<span>welcome to Lorem'Kost</span>
 					</h3>
 						<ul>
-							<li><a href=""><i class="fa-solid fa-user"></i> My profile</a></li>
+							@if(Auth()->user()->role == 'admin' || Auth()->user()->role == 'pemilik_kost')							
+							<li><a href="{{url('dashboard')}}"><i class="fa-solid fa-user"></i> Kost Saya</a></li>
+							@else
+							<li><a href=""><i class="fa-solid fa-user"></i> My Profile</a></li>
+							@endif
 							<li><a href=""><i class="fa-solid fa-pen-to-square"></i> Edit</a></li>
 							<li><a href=""><i class="fa-solid fa-inbox"></i> Inbox</a></li>
 							<li><a href=""><i class="fa-solid fa-gear"></i> Settings</a></li>
@@ -150,77 +151,59 @@
 		@yield('content')
 	</div>
 	<!-- end latest news -->
-
 	<!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Get in Touch</h2>
-						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Pages</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Subscribe</h2>
-						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="https://technext.github.io/fruitkha/index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
+
+	<footer class="bg-light text-dark pt-5 pb-4">
+		<div class="container text-center text-md-left">
+			<div class="row text-center text-md-left">
+
+				 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto nt-3">
+                 <h5 class="text-uppercase mb-4 font-weight-bold text-info">About Us</h5>
+				 <hr class="mb-4">
+				 <p>Cari Kost yang nyaman, aman, dan terpercaya? Lorem Kost menyediakan berbagai jenis Kamar Kost yang bisa di pilih sesuai dengan keinginan anda.</p>
 		</div>
-	</div>
+				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Lorem-Kost</h5>
+					<hr class="mb-4">
+					<p>
+						<li><a herf="#" class="text-dark" style="text-decoration:none">Kontrakan</a></li>
+				</p>
+				<p>
+						<li><a herf="#" class="text-dark" style="text-decoration:none">Kost Putra</a></li>
+				</p>
+				<p>
+						<li><a herf="#" class="text-dark" style="text-decoration:none">Kost Putri</a></li>
+				</p>
+				</div>
+
+				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
+					<hr class="mb-4">
+					<p>
+						<li class="fas fa-home mr-3"></li>JL. Raya Janti, Banguntapan
+				</p>
+				<p>
+						<li class="fas fa-envelope mr-3"></li>loremkost@gmail.com
+				</p>
+				<p>
+						<li class="fas fa-phone mr-3"></li>0857 1335 9166
+				</p>
+				
+				</div>
+
+				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Form Us</h5>
+					<hr class="mb-4">
+					<p>Terima Kasih telah mengunjungi Lorem-Kost.</p>
+				</div>
+				</div>
+				<br></br>
+
+	
 	<!-- end footer -->
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
-						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
-					</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- copyright -->		
+
 	<!-- end copyright -->
 	
 	<!-- jquery -->

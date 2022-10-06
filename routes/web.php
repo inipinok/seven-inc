@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardKostController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardTransaksiController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
@@ -32,35 +33,55 @@ Route::get('/', function () {
     return view('index');
 });
 
-// halaman single post
+// ---------------------- halaman single post -------------------------
 Route::get('kosts/{slug}', [KostController::class, 'singleKost']);
 Route::get('kosts', [KostController::class, 'Second']);
+// -------------------------------- end ------------------------------
 
+// ---------------------- dashboard customer -------------------------
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+// -------------------------------- end ------------------------------
 
+// ------------------------------ author -----------------------------
 Route::get('author/{user:name}', [AuthorController::class, 'index']);
+// -------------------------------- end ------------------------------
 
+// ---------------------- category dasboard -------------------------
 Route::get('categories/{category:slug}', [CategoryController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'indek']);
 Route::get('kategori', [CategoryController::class, 'kategory']);
+// -------------------------------- end ------------------------------
 
-// login
+// ----------------------------- login -------------------------------
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('login', [LoginController::class, 'authenticate']);
 Route::post('logout', [LoginController::class, 'logout']);
+// -------------------------------- end ------------------------------
 
+// ---------------------------- register -----------------------------
 Route::get('register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('register', [RegisterController::class, 'store']);
+// -------------------------------- end ------------------------------
 
-Route::get('dashboard', [AdminController::class, 'index'])->name('admin');
+// ------------------------------ admin ------------------------------
+Route::get('dashboard', [AdminController::class, 'index'])->name('admin')->middleware(['role:admin' , 'role:pemilik']);
+// -------------------------------- end ------------------------------
 
-Route::resource('/dashboard/kost', DashboardKostController::class)->except(['edit',])->middleware('auth');
-Route::post('/dashboard/kost/{kost:slug}/edit', function (kost $kost) {
-    $kos = new DashboardKostController;
-    $req = new Request;
-    return $kos->update($req, $kost);
-});
+// ---------------------- kost admin/pemilik -------------------------
+Route::resource('/dashboard/kost', DashboardKostController::class)->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+// -------------------------------- end ------------------------------
 
+// --------------------------- transaksi -----------------------------
 Route::resource('/dashboard/pembayaran', DashboardTransaksiController::class)->middleware('auth');
+// -------------------------------- end ------------------------------
 
+// --------------------------- wishlist -----------------------------
 Route::resource('/dashboard/wishlist', WishlistController::class)->middleware('auth');
+// -------------------------------- end ------------------------------
+
+// --------------------------- cart -----------------------------
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('cart', CartController::class);
+});
+// -------------------------------- end ------------------------------

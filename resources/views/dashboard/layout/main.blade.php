@@ -111,7 +111,7 @@
   
 
   <ul class="menu-inner py-1">
-
+    
     <!-- Dashboard -->
     <li class="menu-item active">
       <a href="{{ url('dashboard') }}" class="menu-link">
@@ -119,7 +119,7 @@
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
-
+    @can('admin')
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">User</span>
     </li>
@@ -177,7 +177,7 @@
         </li>
       </ul>
     </li>
-    
+    @endcan
     <!-- Components -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Kost</span></li>
     <!-- User interface -->
@@ -204,13 +204,14 @@
         </li>
       </ul>
     </li>
+    @can('admin')
     <li class="menu-item">
-      <a href="{{url('kategori')}}" class="menu-link">
+      <a href="{{url('dashboard/categories')}}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-crown"></i>
         <div data-i18n="Boxicons">Category</div>
       </a>
     </li>
-
+    @endcan
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Transaksi</span>
     </li>
@@ -253,6 +254,14 @@
       <a href="{{url('dashboard/wishlist')}}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-folder-open"></i>
         <div data-i18n="Boxicons">Wishlist</div>
+      </a>
+    </li>
+    <br>
+    <br>
+    <li class="menu-item">
+      <a href="{{url('kosts')}}" class="menu-link">
+      <i class='bx bx-arrow-back'></i>&ensp;
+        <div data-i18n="Boxicons"> lihat di dashboard</div>
       </a>
     </li>
   </ul>

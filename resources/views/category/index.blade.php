@@ -1,23 +1,57 @@
 @extends('dashboard.layout.main')
 @section('content')
-<div class="container-fluid">
-    <h4 class="fw-bold py-3 mb-4">
-    <h4 class="fw-bold py-3"><span class="text-muted fw-light">Category /</span> Category</h4>
-    </h4>
-    <div class="row">
-            @foreach ($categories as $category)
-            <div class="col-md-4">
-                <a href="{{url ('categories/' . $category->slug) }}">
-                <div class="card text-bg-dark">
-                    <img src="https://source.unsplash.com/300x300?{{ $category->name }}" class="card-img" alt="{{ $category->name }}">
-                    <div class="card-img-overlay d-flex align-items-center p-0">
-                        <h6 class="card-title text-center flex-fill p-2 text-white" style="background-color: rgba(0,0,0,0.4);">{{ $category->slug }}</h6>
-                    </div>
-                </div>
-                </a>
-            </div>
-            @endforeach
-	</div>
+<div class="container-fluid mt-3">
+<h4 class="fw-bold py-3 mb-4">
+  <span class="text-muted fw-light">Category /</span> Category
+</h4>
+@if(session()->has('success'))
+<div class="alert alert-success" role="alert">
+  {{session('success')}}
 </div>
-<!-- Examples -->
+@endif
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-pills flex-column flex-md-row mb-3">
+            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/kost')}}"><i class="bx bx-home me-1"></i> category</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/kost/create')}}"><i class='bx bx-add-to-queue'></i> Tambah category</a></li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive col-lg-6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama kategori</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              @foreach($categories as $category)
+                <tr>
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$category->name}}</td>
+                  <td>
+                  <a href="{{ url("dashboard/categories/$category->slug/edit")}}" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
+                      <a href="{{ url('dashboard/categories/' . $category->slug) }}" class="btn btn-sm btn-info mb-2"><i class='bx bx-show-alt'></i></a>
+                      <form action="{{ url('dashboard/categories/' . $category->slug) }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">
+                        <i class='bx bx-message-square-x'></i>                        
+                      </button>
+                      </form>
+                  </td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

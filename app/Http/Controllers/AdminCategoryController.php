@@ -2,41 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\Cart;
-use App\Models\User;
-use App\Models\Order;
-use App\Models\Kost;
 
-class CartController extends Controller
+class AdminCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $itemuser = $request->user();//ambil data user
-        $itemcart = Cart::where('user_id', $itemuser->id)
-                        ->where('status_cart', 'cart')
-                        ->first();
-        return view('cart.index', [
-            'kosts' => Kost::All()
+        return view('category.index', [
+            'categories' => Category::all(),
         ]);
-    }
-
-    public function checkout(Request $request)
-    {
-        $itemuser = $request->user();
-        $itemcart = Cart::where('user_id', $itemuser->id)
-                        ->where('status_cart', 'cart')
-                        ->first();
-        if ($itemcart) {
-            $data = array('title' => 'Checkout',
-                        'itemcart' => $itemcart);
-            return view('cart.checkout', $data);
-        } 
     }
 
     /**
@@ -63,10 +43,10 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
     }
@@ -74,10 +54,10 @@ class CartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -86,10 +66,10 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -97,10 +77,10 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }

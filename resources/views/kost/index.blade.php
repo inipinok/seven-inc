@@ -44,7 +44,7 @@
                   <td>
                   <a href="{{ url("dashboard/kost/$kost->slug/edit")}}" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
                       <a href="{{ url('dashboard/kost/' . $kost->slug) }}" class="btn btn-sm btn-info mb-2"><i class='bx bx-show-alt'></i></a>
-                      <form action="{{ url('dashboard/kost/' . $kost->slug) }}" method="post" class="d-inline">
+                      <form action="{{ url('dashboard/kost/' . $kost->slug) }}" method="post" >
                         @method('delete')
                         @csrf
                         <button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">

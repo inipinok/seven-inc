@@ -14,8 +14,10 @@
         </ul>
         </div>
         <div class="card-body">
-          <form action="{{url('dashboard/kost/' . $kost->slug )}}"  method="post" enctype="multipart/form-data">
+          <form action="{{route('kost.update', $kost->slug)}}"  method="post" enctype="multipart/form-data">
             @csrf
+
+            {{ method_field('PUT') }}
             <div class="form-group mt-2">
               <label for="title">Nama Kost</label>
               <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror required" value="{{ old('title', $kost->title)}}">
@@ -44,6 +46,7 @@
             </div>
             <div class="form-group mt-3 mb-3">
               <label for="image" class="form-label">Upload Foto</label>
+              <input type="hidden" name="oldImage" value="{{ $kost->image }}">
               @if($kost->image)
               <img src="{{asset('storage/' . $kost->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block" >
               @else
