@@ -38,7 +38,7 @@
               <label class="form-label" for="country">Category</label>
               <select id="category_id" name="category_id" class="select2 form-select required">
                 @foreach ($categories as $category )
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}">{{ $category->slug }}</option>
                 @endforeach 
               </select>
             </div>

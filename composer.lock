@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91ff322be149ffc4b3be1276d309f57b",
+    "content-hash": "df6cde5766f7d4f76dc056a4f92b2b08",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5309,6 +5309,112 @@
                 }
             ],
             "time": "2022-01-24T18:55:24+00:00"
+        },
+        {
+            "name": "webdevrus/laravel-cart",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webdevrus/laravel-cart.git",
+                "reference": "5f73e43192a4feb94f32d7463e1985dd9a16a2f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webdevrus/laravel-cart/zipball/5f73e43192a4feb94f32d7463e1985dd9a16a2f4",
+                "reference": "5f73e43192a4feb94f32d7463e1985dd9a16a2f4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3",
+                "webdevrus/laravel-uuid": "1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WebDevRus\\LaravelCart\\Providers\\CartServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Helpers/helpers.php"
+                ],
+                "psr-4": {
+                    "WebDevRus\\LaravelCart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WebDevRus",
+                    "email": "web.developers.rus@gmail.com"
+                }
+            ],
+            "description": "Cart / Laravel E-Commerce",
+            "homepage": "https://github.com/webdevrus/laravel-cart",
+            "keywords": [
+                "cart",
+                "laravel",
+                "laravel 7",
+                "laravel 8",
+                "laravel-cart",
+                "laravel-ecommerce"
+            ],
+            "support": {
+                "issues": "https://github.com/webdevrus/laravel-cart/issues",
+                "source": "https://github.com/webdevrus/laravel-cart/tree/2.0.0"
+            },
+            "time": "2021-03-18T15:43:22+00:00"
+        },
+        {
+            "name": "webdevrus/laravel-uuid",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webdevrus/laravel-uuid.git",
+                "reference": "ce1c51b9bfb64bef5b72835f35cfbf0417a04ca2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webdevrus/laravel-uuid/zipball/ce1c51b9bfb64bef5b72835f35cfbf0417a04ca2",
+                "reference": "ce1c51b9bfb64bef5b72835f35cfbf0417a04ca2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WebDevRus\\Laravel\\": "src/Traits/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WebDevRus",
+                    "email": "web.developers.rus@gmail.com"
+                }
+            ],
+            "description": "UUID",
+            "support": {
+                "issues": "https://github.com/webdevrus/laravel-uuid/issues",
+                "source": "https://github.com/webdevrus/laravel-uuid/tree/v1.0.0"
+            },
+            "time": "2021-02-04T16:46:15+00:00"
         },
         {
             "name": "webmozart/assert",

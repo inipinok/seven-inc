@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row vh-100">
                 <div class="col-md-6 text-center py-5 d-flex flex-column justify-content-center auth-bg-section text-white" style="background-image: url(asset/poto-kost/kost31.jpg)">
-                    <h1 class="text-reset">Welcome to <br> Pina'Kost</h1>
+                    <h1 class="text-reset">Welcome to <br> Lorem'Kost</h1>
                     <p class="font-weight-bold text-reset">Membantumu Mencari Tempat Kost Yang Terbaik!</p>
                 </div>
                 <div class="col-md-6 text-center d-flex flex-column py-5 justify-content-center">
@@ -80,7 +80,7 @@
                         <p class="mb-0 d-flex">
                             <a href="#" class="btn btn-light btn-block mr-2">Sign in with google</a>
                             <a href="#" class="btn btn-facebook mr-2"> <i class="fa-brands fa-google"></i>
-                            <a href="#" class="btn btn-twitter"><i class="mdi mdi-twitter"></i></a>
+                            <a href="#" class="btn btn-twitter"><i class="fa-brands fa-twitter"></i></a>
                         </p>
                     </div>
                 </div>

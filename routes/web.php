@@ -81,7 +81,7 @@ Route::resource('/dashboard/wishlist', WishlistController::class)->middleware('a
 // -------------------------------- end ------------------------------
 
 // --------------------------- cart -----------------------------
-Route::group(['middleware' => 'auth'], function() {
-    Route::resource('cart', CartController::class);
-});
+Route::get('cart/', [CartController::class, 'index']);
+Route::post('tambah_cart/', [CartController::class, 'store']);
+Route::post('tambah_cart/{id}', [CartController::class, 'destroy']);
 // -------------------------------- end ------------------------------

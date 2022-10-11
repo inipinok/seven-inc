@@ -8,7 +8,10 @@
                 <p><a href="{{ url('kosts/' . $kost->slug) }}"></a></p>
                 <p>By. <a href="{{ url('author/' . $kost->user->name )}}">{{ $kost->user->name }}</a>  ini <a href="{{ url('categories/' . $kost->category->slug )}}">{{ $kost->category->slug }}</a> </p>
 				
-                <img src="https://source.unsplash.com/1000x500?{{ $kost->category->name }}" alt="">
+				<div style="max-height: 500px; overflow:hidden;">
+					<img src="{{ asset('storage/' . $kost->image) }}" alt="">
+				</div>
+								
                 
                 <article class="my-3 fs-5">
                     {!! $kost->body !!}
@@ -32,9 +35,8 @@
 						<div class="recent-posts">
 							<h4>Peraturan</h4>
 							<ul>
-								<li>Kost Khusus Putri</li>
 								<li>Dilarang Keluar Melebihi Jam 10 Malam</li>
-								<li>Pria dilarang Masuk Kost</li>
+								<li>Lawan jenis dilarang Masuk Kost</li>
 								<li>Menaati tata tertib yang ada</li>
 							</ul>
 						</div>
@@ -44,6 +46,12 @@
 							<h4>Alamat</h4>
 							<p>{{ $kost->address }}</p>
 							<a href="{{url('checkout')}}" class="boxed-btn black">Booking Sekarang!</a>
+							<form action="{{url('/tambah_cart')}}" method="post" class="d-inline">
+								@csrf
+									<input type="hidden" name="id_user" value="{{Auth()->User()->id}}">
+									<input type="hidden" name="id_kost" value="{{$kost->id}}">
+									<button class="btn btn-black rounded" type="submit"><i class="bi bi-cart2 fa-2x"></i></button>
+								</form>&emsp;
 						</div>
 						<div class="tag-section">
 							<h4>Tags</h4>

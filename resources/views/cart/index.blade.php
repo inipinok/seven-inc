@@ -1,83 +1,58 @@
 @extends('template.main')
 @section('content')
 <!-- check out section -->
-<div class="checkout-section mt-150 mb-150">
-		<div class="container">
+<div class="checkout-section mt-50 mb-100">
+		<div class="container fluid">
 			<div class="row">
-				<div class="col-lg-8">
-					<div class="checkout-accordion-wrap">
-						<div class="accordion" id="accordionExample">
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingOne">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Billing Address
-						        </button>
-						      </h5>
-						    </div>
 
-						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="billing-address-form">
-						        	<form action="https://technext.github.io/fruitkha/index.html">
-						        		<p><input type="text" placeholder="Name"></p>
-						        		<p><input type="email" placeholder="Email"></p>
-						        		<p><input type="text" placeholder="Address"></p>
-						        		<p><input type="tel" placeholder="Phone"></p>
-						        		<p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
-						        	</form>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingTwo">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						          Shipping Address
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="shipping-address-form">
-						        	<p>Your shipping address form is here.</p>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingThree">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						          Card Details
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="card-details">
-						        	<p>Your card details goes here.</p>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-lg-4">
-					<div class="order-details-wrap">
-						<table class="order-details">
+				<div class="col-lg-12">
+					<div>
+						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Your order Details</th>
+									<th>No</th>
+									<th>Image</th>
+									<th>Nama Kost</th>
+									<th>Detail</th>
 									<th>Price</th>
+									<th>Qty</th>
+									<th></th>
 								</tr>
 							</thead>
+							<tbody>
+								@foreach($carts as $cart)
+								<tr>
+									<td>{{$loop->iteration}}</td>
+									<td style="height: 10px; width: 10px;">
+										<img src="{{ asset('storage/' . $cart->image) }}" alt="">
+									</td>
+									<td>{{$cart->nama_kost}}</td>
+									<td>{{$cart->alamat}}</td>
+									<td>{{$cart->harga}}</td>
+									<td>
+										<style>
+									input[type=number]::-webkit-inner-spin-button {
+										background-color:grey;
+										opacity: 1
+									}
+
+									</style>
+									<input type="number" value="1" min="1" max="999">
+									</td>
+									<td>
+										<a href="{{url ('checkout') }}" class="btn btn-sm btn-success mb-2"><i class="bi bi-cart-check-fill"></i></a>
+										<form action="{{ url('tambah_cart/' .$cart->id) }}" method="post" >
+											@csrf
+											<button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">
+											<i class="bi bi-trash3"></i>                     
+										</button>
+										</form>
+									</td>
+								</tr>
+								@endforeach
+							</tbody>
 						</table>
-						<a href="#" class="boxed-btn">Place Order</a>
+						<!-- <a href="#" class="boxed-btn">Place Order</a> -->
 					</div>
 				</div>
 			</div>

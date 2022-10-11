@@ -37,9 +37,8 @@
 						<div class="recent-posts">
 							<h4>Peraturan</h4>
 							<ul>
-								<li>Kost Khusus Putri</li>
 								<li>Dilarang Keluar Melebihi Jam 10 Malam</li>
-								<li>Pria dilarang Masuk Kost</li>
+								<li>Lawan jenis dilarang Masuk Kost</li>
 								<li>Menaati tata tertib yang ada</li>
 							</ul>
 						</div>
@@ -49,14 +48,14 @@
 							<h4>Alamat</h4>
 							<p>{{ $kost->address }}</p>		
                             <a href="{{ url('dashboard/kost') }}" class="btn btn-sm btn-info mb-2"><i class='bx bx-arrow-back' ></i></a>
-                            <a href="" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
-                            <form action="{{ url('dashboard/kost/' . $kost->slug) }}" method="post" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">
-                                <i class='bx bx-message-square-x'></i>                        
-                                </button>
-                            </form>	
+                            <a href="{{ url("dashboard/kost/$kost->slug/edit")}}" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
+							<form action="{{ url('dashboard/kost/' . $kost->slug) }}" method="post" class="d-inline" >
+								@method('delete')
+								@csrf
+								<button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">
+								<i class='bx bx-message-square-x'></i>                        
+							</button>
+							</form>
                         </div>
 					</div>
 				</div>

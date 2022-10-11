@@ -89,9 +89,6 @@
 				<li class="nav-item">
 				<a class="nav-link" href="{{ url('categories') }}">Category</a>
 				</li>
-				<li class="nav-item">
-				<a class="nav-link" href="{{ url('cart') }}"><i class="bi bi-cart2"></i></a>
-				</li>
 			</ul>
 			<ul>
 				@auth
