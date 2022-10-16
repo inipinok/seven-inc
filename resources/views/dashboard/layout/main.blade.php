@@ -130,7 +130,7 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="{{url('dashboard/admin')}}" class="menu-link">
+          <a href="{{url('dashboard/user-admin')}}" class="menu-link">
             <div data-i18n="Account">Account</div>
           </a>
         </li>
@@ -162,7 +162,7 @@
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-user"></i>
-        <div data-i18n="Authentications">User</div>
+        <div data-i18n="Authentications">Customer</div>
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
@@ -250,12 +250,6 @@
       </ul>
     </li>
 
-    <li class="menu-item">
-      <a href="{{url('dashboard/wishlist')}}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-folder-open"></i>
-        <div data-i18n="Boxicons">Wishlist</div>
-      </a>
-    </li>
     <br>
     <br>
     <li class="menu-item">

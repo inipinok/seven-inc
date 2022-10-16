@@ -16,10 +16,12 @@ class CreateCartsTable extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('status_cart');
-            $table->string('status_pembayaran');
-            $table->double('subtotal');
-            $table->double('total');
+            $table->foreignId('id_kost');
+            $table->string('nama_kost');
+            $table->string('image');
+            $table->string('alamat');
+            $table->double('harga');
+            $table->double('qty');
             $table->timestamps();
         });
     }

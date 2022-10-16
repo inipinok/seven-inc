@@ -14,8 +14,8 @@
       <div class="card">
         <div class="card-header">
           <ul class="nav nav-pills flex-column flex-md-row mb-3">
-            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/kost')}}"><i class="bx bx-home me-1"></i> category</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/kost/create')}}"><i class='bx bx-add-to-queue'></i> Tambah category</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/categories')}}"><i class="bx bx-home me-1"></i> category</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/categories/create')}}"><i class='bx bx-add-to-queue'></i> Tambah category</a></li>
           </ul>
         </div>
         <div class="card-body">
@@ -32,10 +32,8 @@
               @foreach($categories as $category)
                 <tr>
                   <td>{{$loop->iteration}}</td>
-                  <td>{{$category->name}}</td>
+                  <td>{{$category->slug}}</td>
                   <td>
-                  <a href="{{ url("dashboard/categories/$category->slug/edit")}}" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
-                      <a href="{{ url('dashboard/categories/' . $category->slug) }}" class="btn btn-sm btn-info mb-2"><i class='bx bx-show-alt'></i></a>
                       <form action="{{ url('dashboard/categories/' . $category->slug) }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf

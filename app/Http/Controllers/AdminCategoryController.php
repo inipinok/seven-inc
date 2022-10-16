@@ -26,7 +26,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedDate = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:categories',
+        ]);
+
+        Category::create($validatedDate);
+
+        return redirect('dashboard/categories')->with('success', 'new category has been added!');
     }
 
     /**
@@ -82,6 +89,9 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+
+        Category::destroy($category->id);
+
+        return redirect('dashboard/categories')->with('success', 'post has been deleted!');
     }
 }

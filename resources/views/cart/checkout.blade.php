@@ -19,67 +19,43 @@
 						    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 						      <div class="card-body">
 						        <div class="billing-address-form">
-						        	<form action="">
-						        		<p><input type="text" placeholder="Name"></p>
-						        		<p><input type="email" placeholder="Email"></p>
-						        		<p><input type="text" placeholder="Address"></p>
-						        		<p><input type="phone_number" placeholder="Phone Number"></p>
-						        		<p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
-						        	</form>
+						        	<form action="checkout"  method="POST">
+										@csrf
+						        		<p><input type="nama_customer" placeholder="Name"  name="nama_customer"></p>
+						        		<p><input type="phone_number" placeholder="Phone Number" name="phone_number"></p>
+                        <input type="hidden" name="nama_kost" value="{{$checkout->nama_kost}}">
 						        </div>
 						      </div>
 						    </div>
 						  </div>
-						  <div class="card single-accordion">
-						    <div class="card-header" id="headingTwo">
-						      <h5 class="mb-0">
-						        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						          Detail Pemesanan
-						        </button>
-						      </h5>
-						    </div>
-						    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-						      <div class="card-body">
-						        <div class="shipping-address-form">
-						        	<form action="">
-										@csrf
-
-										@foreach(checkouts as checkout)
-										<div class="form-group mt-2">
-											<label for="title">Nama Kost</label>
-											<input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror required" value="{{ old('title', $checkout->title)}}">
-											@error('title')
-											<div class="invalid-feedback">
-												{{ $message }}
-											</div>
-											@enderror
-										</div>
-										@endforeach
-
-									</form>
-						        </div>
-						      </div>
-						    </div>
 						  </div>
 						</div>
-
 					</div>
+          <div class="col-lg-4">
+            <div class="order-details-wrap">
+              <table class="order-details">
+                <thead>
+                  <tr>
+                    <th>Detail Pemesanan</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($checkouts as $checkout)
+                  <tr>
+                    <td><input type="text" name="nama_kost" value="{{$nama_kost}}"></td>
+                    <td>{{$checkout->price}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>     
+              </table>
+              <button type="submit" class="boxed-btn">Place Order</button>
+              </form>
+  
+            </div>
+          </div>
 				</div>
 
-				<div class="col-lg-4">
-					<div class="order-details-wrap">
-						<table class="order-details">
-							<thead>
-								<tr>
-									<th>Your order Details</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-                            
-						</table>
-						<a href="#" class="boxed-btn">Place Order</a>
-					</div>
-				</div>
 			</div>
 		</div>
 </div>

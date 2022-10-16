@@ -39,7 +39,7 @@ class KostController extends Controller
         ], $data);
     }
 
-    public function singleFasil($fasilitas) 
+    public function singleFasil($fasilitas)     
     {
         $result['kost'] = Kost::with('fasilitas')->where('fasilitas', $fasilitas)->first();
         

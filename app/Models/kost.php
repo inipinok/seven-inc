@@ -13,18 +13,6 @@ class Kost extends Model
     protected $guarded = ['id'];
     protected $with = ['category', 'user'];
 
-    static function list_produk(){
-        $data = Kost::all();
-        return $data;
-    }
-
-    static function tambah_kost($title, $price){
-        Kost::create([
-            "title" => $title,
-            "price" => $price,
-        ]);
-    }
-
     public function scopeFilter($query, array $filters)
     {
 

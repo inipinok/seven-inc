@@ -89,6 +89,9 @@
 				<li class="nav-item">
 				<a class="nav-link" href="{{ url('categories') }}">Category</a>
 				</li>
+				<li class="nav-item">
+				<a class="nav-link" href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i></a>
+				</li>
 			</ul>
 			<ul>
 				@auth
@@ -159,31 +162,18 @@
 				 <hr class="mb-4">
 				 <p>Cari Kost yang nyaman, aman, dan terpercaya? Lorem Kost menyediakan berbagai jenis Kamar Kost yang bisa di pilih sesuai dengan keinginan anda.</p>
 		</div>
-				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Lorem-Kost</h5>
-					<hr class="mb-4">
-					<p>
-						<li><a herf="#" class="text-dark" style="text-decoration:none">Kontrakan</a></li>
-				</p>
-				<p>
-						<li><a herf="#" class="text-dark" style="text-decoration:none">Kost Putra</a></li>
-				</p>
-				<p>
-						<li><a herf="#" class="text-dark" style="text-decoration:none">Kost Putri</a></li>
-				</p>
-				</div>
-
+				
 				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
 					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
 					<hr class="mb-4">
 					<p>
-						<li class="fas fa-home mr-3"></li>JL. Raya Janti, Banguntapan
+						<li class="fas fa-home mr-3"></li>JL. Raya Kelet, Keling - Jepara
 				</p>
 				<p>
 						<li class="fas fa-envelope mr-3"></li>loremkost@gmail.com
 				</p>
 				<p>
-						<li class="fas fa-phone mr-3"></li>0857 1335 9166
+						<li class="fas fa-phone mr-3"></li>0123 4567 8901
 				</p>
 				
 				</div>

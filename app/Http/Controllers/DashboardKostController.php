@@ -18,9 +18,10 @@ class DashboardKostController extends Controller
      */
     public function index()
     {
-        return view('kost.index', [
-            'kosts' => Kost::where('user_id', auth()->user()->id)->get()
-        ]);
+        $data['admin'] = Kost::all();
+        $data['pemilik_kost'] = Kost::where('user_id', auth()->user()->id)->get();
+
+        return view('kost.index', $data);
     }
 
     /**

@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Wishlist;
+use App\Models\User;
 
-class WishlistController extends Controller
+class UserAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $itemuser = $request->user();
-        $itemwishlist = Wishlist::where('user_id', $itemuser->id)
-                                ->paginate(10);
-        $data = array('title' => 'Wishlist',
-                    'itemwishlist' => $itemwishlist);
-        return view('wishlist.index', $data)->with('no', ($request->input('page', 1) - 1) * 10);
+        $data['users'] = User::all();
+        $data['admins'] = User::where(auth()->user()->is_admin);
+
+        return view('user-admin.index', $data);
     }
+
     /**
      * Show the form for creating a new resource.
      *

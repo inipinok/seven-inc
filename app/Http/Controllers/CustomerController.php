@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Kost;
 use Illuminate\Http\Request;
 
-class AlamatPengirimanController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,9 @@ class AlamatPengirimanController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth()->User()->id;
+        $data['checkouts'] = Customer::where('user_id', $user)->get();
+        return view('cart.checkout', $data);
     }
 
     /**
@@ -34,16 +38,28 @@ class AlamatPengirimanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kost = Kost::where('id', $request->id_kost)->first();
+        $checkout = new customer;
+        $checkout->user_id = Auth()->user()->id;
+        $checkout->kost_id = $request->id_kost;
+        $checkout->nama_customer = $request->nama_customer;
+        $checkout->phone_number = $request->phone_number;
+        $checkout->nama_kost = $request->title;
+        $checkout->price = $request->price;
+        $checkout->status = 0;
+        $checkout->total = 0;
+        $checkout->save();
+        dd($kost);
+        return redirect ('cart');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
         //
     }
@@ -51,10 +67,10 @@ class AlamatPengirimanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
         //
     }
@@ -63,10 +79,10 @@ class AlamatPengirimanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
         //
     }
@@ -74,10 +90,10 @@ class AlamatPengirimanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
         //
     }

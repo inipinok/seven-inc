@@ -10,13 +10,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardKostController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\DashboardTransaksiController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\WishlistController;
 use App\Htp\Controllers\DB;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Kost;
+use App\Http\Controllers\CustomerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -76,12 +78,15 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 Route::resource('/dashboard/pembayaran', DashboardTransaksiController::class)->middleware('auth');
 // -------------------------------- end ------------------------------
 
-// --------------------------- wishlist -----------------------------
-Route::resource('/dashboard/wishlist', WishlistController::class)->middleware('auth');
-// -------------------------------- end ------------------------------
-
 // --------------------------- cart -----------------------------
 Route::get('cart/', [CartController::class, 'index']);
+// Route::get('checkout', [CartController::class, 'checkout']);
 Route::post('tambah_cart/', [CartController::class, 'store']);
 Route::post('tambah_cart/{id}', [CartController::class, 'destroy']);
 // -------------------------------- end ------------------------------
+
+
+
+Route::resource('/checkout', CustomerController::class)->middleware('auth');
+
+Route::resource('dashboard/user-admin', UserAdminController::class)->middleware('auth');

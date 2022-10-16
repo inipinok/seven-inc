@@ -24,7 +24,10 @@
               <thead>
                 <tr>
                   <th>No</th>
+                  @can('admin')
                   <th>Nama</th>
+                  @endcan
+                  <th>Nama Kost</th>
                   <th>Category</th>
                   <th>No Hp</th>
                   <th>Alamat</th>
@@ -33,14 +36,40 @@
                 </tr>
               </thead>
               <tbody>
-              @foreach($kosts as $kost)
+                @if(Auth()->user()->is_admin)
+                @foreach($admin as $kost)
+                <tr>
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$kost->user->name}}</td>
+                  <td>{{$kost->title}}</td>
+                  <td>{{$kost->category->slug}}</td>  
+                  <td>{{$kost->user->phone_number}}</td>
+                  <td>{{$kost->address}}</td>
+                  <td>Rp. {{$kost->price}}</td>
+                  <td>
+                  <a href="{{ url("dashboard/kost/$kost->slug/edit")}}" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
+                      <a href="{{ url('dashboard/kost/' . $kost->slug) }}" class="btn btn-sm btn-info mb-2"><i class='bx bx-show-alt'></i></a>
+                      <form action="{{ url('dashboard/kost/' . $kost->slug) }}" method="post" >
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">
+                        <i class='bx bx-message-square-x'></i>                        
+                      </button>
+                      </form>
+                  </td>
+                </tr>
+                @endforeach
+
+                @else
+
+              @foreach($pemilik_kost as $kost)
                 <tr>
                   <td>{{$loop->iteration}}</td>
                   <td>{{$kost->title}}</td>
-                  <td>{{$kost->category->slug}}</td>
+                  <td>{{$kost->category->slug}}</td>  
                   <td>{{$kost->user->phone_number}}</td>
                   <td>{{$kost->address}}</td>
-                  <td>{{$kost->price}}</td>
+                  <td>Rp. {{$kost->price}}</td>
                   <td>
                   <a href="{{ url("dashboard/kost/$kost->slug/edit")}}" class="btn btn-sm btn-warning mb-2"><i class='bx bx-message-square-edit'></i></a>
                       <a href="{{ url('dashboard/kost/' . $kost->slug) }}" class="btn btn-sm btn-info mb-2"><i class='bx bx-show-alt'></i></a>
@@ -54,6 +83,8 @@
                   </td>
                 </tr>
               @endforeach
+
+              @endif
               </tbody>
             </table>
           </div>
