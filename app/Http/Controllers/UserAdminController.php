@@ -14,10 +14,10 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $data['users'] = User::all();
-        $data['admins'] = User::where(auth()->user()->is_admin);
-
-        return view('user-admin.index', $data);
+        // $data['users'] = User::where(auth()->user()->id);
+        // $data['admins'] = User::all();  
+        $data = User::where('role', '=', 'admin')->get();
+        return view('user-admin.index', compact('data'));
     }
 
     /**

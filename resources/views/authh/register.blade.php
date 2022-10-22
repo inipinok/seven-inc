@@ -59,7 +59,6 @@
                                 <select class="form-select" id="inputGroupSelect01" name="role">
                                     <option selected>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-- pilih --</option>
                                     <option value="customer">Customer</option>
-                                    <option value="admin">Admin</option>
                                     <option value="pemilik_kost">Pemilik Kost</option>
                                 </select>
                             </div><br>

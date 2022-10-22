@@ -14,43 +14,33 @@
       <div class="card">
         <div class="card-header">
           <ul class="nav nav-pills flex-column flex-md-row mb-3">
-            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/categories')}}"><i class="bx bx-home me-1"></i> Admin</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/categories/create')}}"><i class='bx bx-add-to-queue'></i> Tambah Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('dashboard/user-admin')}}"><i class="bx bx-home me-1"></i> Admin</a></li>
           </ul>
         </div>
         <div class="card-body">
-          <div class="table-responsive col-lg-6">
+          <div class="table-responsive col-lg-12">
             <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
+                  <th>Email</th>
                   <th>No Telephone</th>
-                  <th>Action</th>
+                  <th>Level</th>
                 </tr>
               </thead>
               <tbody>
-            @if(auth()->user()->is_admin)
 
-              @foreach($admins as $admin)
+              @foreach($data as $admin)
                 <tr>
                   <td>{{$loop->iteration}}</td>
                   <td>{{$admin->name}}</td>
+                  <td>{{$admin->email}}</td>
                   <td>{{$admin->phone_number}}</td>
+                  <td>{{$admin->role}}</td>
                 </tr>
               @endforeach
 
-              @else 
-              
-              @foreach($users as $user)
-                <tr>
-                  <td>{{$loop->iteration}}</td>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->phone_number}}</td>
-                </tr>
-              @endforeach
-
-              @endif
               </tbody>
             </table>
           </div>

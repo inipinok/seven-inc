@@ -134,11 +134,6 @@
             <div data-i18n="Account">Account</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="pages-account-settings-notifications.html" class="menu-link">
-            <div data-i18n="Notifications">Setting</div>
-          </a>
-        </li>
       </ul>
     </li>
     <li class="menu-item">
@@ -148,31 +143,8 @@
       </a>
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="#" class="menu-link" target="_blank">
+          <a href="{{url('dashboard/user-pemilikkos')}}" class="menu-link" >
             <div data-i18n="Basic">Account</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="auth-register-basic.html" class="menu-link" target="_blank">
-            <div data-i18n="Basic">Setting</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user"></i>
-        <div data-i18n="Authentications">Customer</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="#" class="menu-link" target="_blank">
-            <div data-i18n="Basic">Account</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="auth-register-basic.html" class="menu-link" target="_blank">
-            <div data-i18n="Basic">Setting</div>
           </a>
         </li>
       </ul>
@@ -212,43 +184,9 @@
       </a>
     </li>
     @endcan
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Transaksi</span>
-    </li>
 
     <!-- Extended components -->
-    <li class="menu-item">
-      <a href="javascript:void(0)" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-money"></i>
-        <div data-i18n="Extended UI">Transaksi</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="{{ url('dashboard/pembayaran') }}" class="menu-link">
-            <div data-i18n="Perfect Scrollbar">Pembayaran</div>
-          </a>
-        </li>
-      </ul>
-    </li>
-
-    <li class="menu-item">
-      <a href="javascript:void(0)" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-cart"></i>
-        <div data-i18n="Extended UI">Cart</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="#" class="menu-link">
-            <div data-i18n="Perfect Scrollbar">Cart</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="#" class="menu-link">
-            <div data-i18n="Perfect Scrollbar">Checkout</div>
-          </a>
-        </li>
-      </ul>
-    </li>
+    
 
     <br>
     <br>
@@ -276,16 +214,6 @@
       
 
       <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-        <!-- Search -->
-        <div class="navbar-nav align-items-center">
-          <div class="nav-item d-flex align-items-center">
-            <i class="bx bx-search fs-4 lh-0"></i>
-            <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
-          </div>
-        </div>
-        <!-- /Search -->
-        
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
         
@@ -315,18 +243,9 @@
       © <script>
       document.write(new Date().getFullYear())
       </script>
-      , made with ❤️ by <a href="https://themeselection.com/" target="_blank" class="footer-link fw-bolder">Ervina Hardiyat</a>
+      , made with ❤️ by <a href="{{url('/kosts')}}" class="footer-link fw-bolder">Lorem'Kost</a>
     </div>
     <div>
-      
-      <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-      <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-      
-      <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
-      
-      <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="footer-link me-4">Support</a>
-      
-      
     </div>
   </div>
 </footer>

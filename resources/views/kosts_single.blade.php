@@ -21,7 +21,7 @@
             </div>
 			<div class="col-lg-4">
 					<div class="sidebar-section">
-						<div class="recent-posts">
+						<!-- <div class="recent-posts">
 							<h4>Fasilitas</h4>
 							<ul>
 								<li>Kamar Mandi Dalam</li>
@@ -39,13 +39,13 @@
 								<li>Lawan jenis dilarang Masuk Kost</li>
 								<li>Menaati tata tertib yang ada</li>
 							</ul>
-						</div>
+						</div> -->
 						<div class="price">
 							<h4>Price</h4>
-							<p class="btn btn-success">Rp.{{ $kost->price }} /bulan</p>
+							<p class="btn btn-warning">Rp.{{ $kost->price }} /bulan</p>
 							<h4>Alamat</h4>
 							<p>{{ $kost->address }}</p>
-							<a href="{{url('checkout')}}" class="boxed-btn black">Booking Sekarang!</a>
+							<a href="https://wa.me/+6281568289486?text=saya%20mau%20pesan%20kost" class="btn btn-success"><i class="bi bi-whatsapp"></i> Pesan Di WhatsApp</a>
 							<form action="{{url('/tambah_cart')}}" method="post" class="d-inline">
 								@csrf
 									<input type="hidden" name="id_user" value="{{Auth()->User()->id}}">
@@ -53,7 +53,7 @@
 									<button class="btn btn-black rounded" type="submit"><i class="bi bi-cart2 fa-2x"></i></button>
 								</form>&emsp;
 						</div>
-						<div class="tag-section">
+						<!-- <div class="tag-section">
 							<h4>Tags</h4>
 							<ul>
 								<li><a href="#">Terjamin</a></li>
@@ -63,7 +63,7 @@
 								<li><a href="#">Murah</a></li>
 								<li><a href="#">Terdekat</a></li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
         </div>

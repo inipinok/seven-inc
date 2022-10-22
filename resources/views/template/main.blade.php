@@ -111,8 +111,8 @@
 							<li><a href=""><i class="fa-solid fa-user"></i> My Profile</a></li>
 							@endif
 							<li><a href=""><i class="fa-solid fa-pen-to-square"></i> Edit</a></li>
-							<li><a href=""><i class="fa-solid fa-inbox"></i> Inbox</a></li>
-							<li><a href=""><i class="fa-solid fa-gear"></i> Settings</a></li>
+							<!-- <li><a href=""><i class="fa-solid fa-inbox"></i> Inbox</a></li>
+							<li><a href=""><i class="fa-solid fa-gear"></i> Settings</a></li> -->
 							<li>
 								<form action="{{ url('logout') }}" method="post">
 									@csrf

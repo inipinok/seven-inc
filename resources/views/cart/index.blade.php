@@ -40,7 +40,7 @@
 									<input type="number" value="1" min="1" max="999">
 									</td>
 									<td>
-										<a href="{{url ('checkout') }}" class="btn btn-sm btn-success mb-2"><i class="bi bi-cart-check-fill"></i></a>
+										<a href="https://wa.me/+6281568289486?text=saya%20mau%20pesan%20kost" class="btn btn-sm btn-success mb-2"><i class="bi bi-whatsapp"></i></a>
 										<form action="{{ url('tambah_cart/' .$cart->id) }}" method="post" >
 											@csrf
 											<button class="btn btn-sm btn-danger mb-2" onclick="return confirm('Anda yakin mau menghapus ini?')">
